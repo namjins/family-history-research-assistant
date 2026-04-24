@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Test + type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Env
+.env
+.env.local
+
+# Local working data — never commit real genealogical data, DBs, or tokens.
+# Everything in data/ is ignored except the placeholder so the dir exists after clone.
+data/*
+!data/.gitkeep
+
+# OAuth token cache (catches `.tokens.json`, `tokens.json` anywhere)
+.fhra/
+.tokens.json
+tokens.json
+
+# BMAD scratch — agent transcripts, session caches, expansion pack downloads.
+# Keep user-authored docs/ content committed; this only excludes tooling artifacts.
+.bmad-core/*.log
+.bmad-core/sessions/
+.bmad-core/cache/
+
+# Claude Code local overrides (machine-specific permissions, etc.)
+.claude/settings.local.json
+
+# Editor / OS junk
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
