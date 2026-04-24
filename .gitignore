@@ -29,11 +29,13 @@ data/*
 .tokens.json
 tokens.json
 
-# BMAD scratch — agent transcripts, session caches, expansion pack downloads.
-# Keep user-authored docs/ content committed; this only excludes tooling artifacts.
-.bmad-core/*.log
-.bmad-core/sessions/
-.bmad-core/cache/
+# BMAD scratch — runtime logs/sessions/caches under the framework or output dirs.
+# Commit the framework (_bmad/) and generated artifacts (_bmad-output/); only
+# exclude tooling artifacts that might appear later.
+_bmad/**/*.log
+_bmad/**/sessions/
+_bmad/**/cache/
+_bmad-output/**/*.log
 
 # Claude Code local overrides (machine-specific permissions, etc.)
 .claude/settings.local.json

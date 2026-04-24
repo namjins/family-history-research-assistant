@@ -11,20 +11,19 @@ repository. Code lives under `src/`; docs describe what we're building, for whom
 | [`backend-api.md`](backend-api.md) | Concise reference of every surface a UI can talk to — MCP tools, CLI commands, SQLite schema. Stable contract; keep this in sync when you add endpoints. |
 | [`familysearch-compliance.md`](familysearch-compliance.md) | Our contractual obligations under the FSI Solutions Program Agreement — tier limits, data-use rules, breach notification, termination duties. Re-read whenever FSI updates the Agreement (60-day effective-date window). |
 
-## What goes here when BMAD is adopted
+## BMAD-generated artifacts
 
-We're planning to use the **BMAD Method** to drive UI design and implementation. When
-BMAD is introduced (via `npx bmad-method install` or similar), it will generate additional
-artifacts in this directory:
+**BMAD Method v6.3+ writes to `_bmad-output/`, not here.** We're planning to use BMAD to
+drive UI design and implementation. When BMAD agents are run, they produce:
 
-- `prd.md` — product requirements document
-- `architecture.md` — system architecture including the UI layer
-- `ux-specification.md` — UX/UI spec from the UX Expert agent
-- `stories/` — sharded user stories derived from epics
-- `epics/` — epics derived from the PRD
+- `_bmad-output/planning-artifacts/` — PRD, architecture, UX specification, epics
+- `_bmad-output/implementation-artifacts/` — sharded stories, implementation plans
 
-The **project brief is the stable starting point** for any planning pass; everything else
-is derived from it.
+**Don't hand-edit those generated artifacts.** Re-run the relevant BMAD agent (via
+Claude Code Skills under `.claude/skills/bmad-agent-*`) if the underlying inputs change.
+
+The **project brief in this directory is the stable starting point** — everything BMAD
+generates is derived from it.
 
 ## Conventions
 

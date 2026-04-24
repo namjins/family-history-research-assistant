@@ -135,20 +135,33 @@ reference). These are hard rules that agents and code changes must respect:
 
 ## Product docs and planning
 
-Product-side artifacts live under `docs/`. The stable inputs are:
+Product-side artifacts live in two places:
 
-- `docs/project-brief.md` — current state, user, problem, next milestone.
-- `docs/backend-api.md` — the contract a UI consumes (MCP tools, CLI, schema).
+- **`docs/`** — hand-authored, stable inputs:
+  - `docs/project-brief.md` — current state, user, problem, next milestone.
+  - `docs/backend-api.md` — the contract a UI consumes (MCP tools, CLI, schema).
+  - `docs/familysearch-compliance.md` — FSI Solutions Program obligations.
+- **`_bmad-output/`** — BMAD-generated artifacts:
+  - `_bmad-output/planning-artifacts/` — PRD, architecture, UX spec, epics.
+  - `_bmad-output/implementation-artifacts/` — sharded stories and implementation plans.
 
-When planning UI work, treat these as the starting point. If the **BMAD Method** is in
-use (installed via `npx bmad-method install`), BMAD's agents (Analyst, PM, Architect,
-UX Expert, SM, Dev, QA) operate on artifacts in `docs/` — they derive `prd.md`,
-`architecture.md`, `ux-specification.md`, and sharded `stories/` from the brief. Don't
-hand-edit those generated artifacts; re-run the relevant BMAD agent if the brief changes.
+**BMAD Method** (installed, v6.3+) drives UI design and implementation. The framework
+itself lives in `_bmad/` (4 phase workflows: analysis, plan-workflows, solutioning,
+implementation). BMAD agents are exposed as **Claude Code Skills** under
+`.claude/skills/` (bmad-agent-analyst, bmad-agent-pm, bmad-agent-architect,
+bmad-agent-ux-designer, bmad-agent-dev, bmad-agent-tech-writer, plus supporting skills
+for brainstorming and elicitation).
 
-The Claude Code agents under `.claude/agents/` are a **different thing** from BMAD
-agents — they're genealogy research specialists, not software-delivery agents. Both may
-coexist in this repo without conflict.
+When planning UI work, treat `docs/project-brief.md` as the starting point and let BMAD
+agents derive the planning/implementation artifacts. **Don't hand-edit generated
+artifacts in `_bmad-output/`** — re-run the relevant BMAD agent if the brief changes.
+
+The genealogy agents under `.claude/agents/` are a **different thing** from the BMAD
+agents/skills. They're research specialists (genealogy-researcher, source-evaluator, etc.),
+not software-delivery agents. Both coexist in this repo:
+
+- `.claude/agents/` → research work against the tree + FS API
+- `.claude/skills/` → BMAD software-delivery workflow for building the UI
 
 ## Available agents (invoke via `Agent` tool)
 
